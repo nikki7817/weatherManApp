@@ -1,0 +1,101 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+
+.app .search{
+  text-align: center;
+  padding: 1rem;
+
+}
+
+.app input{
+ padding: .7rem 1.5rem;
+ font-size: 1.2rem;
+ border-radius: 25px;
+ border: 1px solid rgba(255, 255, 255, 0.8);
+ background: rgba(255, 255, 255, 0.1);
+}
+
+::placeholder{
+  color: #f8f8f8;
+}
+
+.degree {
+  font-size: 6rem;
+}
+
+.city{
+  font-size: 3rem;
+}
+
+.container {
+  margin: auto;
+  position: relative;
+  top: 10%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+  border-radius: 25px;
+}
+
+.weatherapp{
+  text-align: center;
+}
+
+.container .item2{
+text-align: center;
+border: #8f8f9e solid 1px;
+border-radius: 5px;
+padding: 5px;
+}
+
+@media (min-width: 768px) {
+  .container {
+  flex-wrap: nowrap;
+  }
+}
+
+.container .item1{
+  text-align: center;
+  border: #8f8f9e solid 1px;
+  border-radius: 5px;
+  padding: 5px;
+  
+}
+
+.cityName{
+    align-items: center;
+}
+
+.forecast{
+  text-align: center;
+  border: #8f8f9e solid 1px;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+
+
+
+
+
+
