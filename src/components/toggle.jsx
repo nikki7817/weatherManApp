@@ -1,34 +1,39 @@
 import React, { useState } from 'react';
 
-const ToggleButton = ({ onToggle }) => {
-  const [isToggled, setToggled] = useState(false);
-
-
-
-  //Styling for the toggle button
-  const buttonStyles = {
-    padding: '10px',
-    fontSize: '20px',
-    backgroundColor: isToggled ?   '#2196F3'  :'#393842',
-    color: '#fff',
-    borderRadius: '20px',
-    cursor: 'pointer',
-    outline: 'none',
-    border: '1px solid rgba(255, 255, 255, 0.8)',
-  };
+const Toggle = ({ onToggle }) => {
+  const [isCelsius, setIsCelsius] = useState(true); // Default to Celsius
 
   const handleToggle = () => {
-    console.log("I'm ToggleButton")
-    setToggled(!isToggled);
-    onToggle(!isToggled);
+    setIsCelsius(!isCelsius); // Toggle between Celsius and Fahrenheit
+    onToggle(isCelsius); // Call the onToggle function with the new state
   };
 
   return (
-    <button onClick={handleToggle} style={buttonStyles}>
-      
-      {isToggled ?  'Celsius ' :'Fahrenheit '}
-    </button>
+    <div className="toggle-container">
+      <label className="toggle">
+        <input
+          type="radio"
+          name="temperature"
+          value="celsius"
+          checked={isCelsius}
+          onChange={handleToggle}
+        />
+        <span className="slider"></span>
+      </label>
+      <span className="toggle-text">°C</span>
+      <label className="toggle">
+        <input
+          type="radio"
+          name="temperature"
+          value="fahrenheit"
+          checked={!isCelsius}
+          onChange={handleToggle}
+        />
+        <span className="slider"></span>
+      </label>
+      <span className="toggle-text">°F</span>
+    </div>
   );
 };
 
-export default ToggleButton;
+export default Toggle;

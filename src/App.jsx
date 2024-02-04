@@ -103,7 +103,7 @@ const forecastWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${lo
     </h1>
     <div className='search'>
       <input className='animate__animated animate__jello' value={location} onKeyDown={getCurrentData} type='text' onChange={event => setLocation(event.target.value)} placeholder='Enter location'/>
-      {errorMessage && <h2 className='animate__animated animate__wobble'>{errorMessage}</h2>}
+      {errorMessage && <h2 className='animate__animated animate__shakeX'>{errorMessage}</h2>}
     </div>
 
     {showContainer && ( // Conditionally render the container
