@@ -5,6 +5,8 @@ import axios from 'axios'
 //importing Components
 import Forecast from './components/forecast'
 import ToggleButton from './components/toggle'
+import Search from './components/search'
+import Current from './components/current'
 
 //Importing Css
 import './index.css'
@@ -84,78 +86,25 @@ const forecastWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${lo
 
   return (
     <>
-    <div className="app">
+      <div className="app">
 
-      
-    <ToggleButton onToggle={handleToggle} />
-
-    
-    {/* Current Weather Info */}
-    <h1 className='weatherapp animate__animated animate__jello'>Weather Man
-
-    {c_weather && c_weather.weather && c_weather.weather.length > 0 && (
-    
-    <span> <img src={`https://openweathermap.org/img/wn/${c_weather.weather[0].icon}.png`} /></span>
-
-    )}
-
-
-    </h1>
-    <div className='search'>
-      <input className='animate__animated animate__jello' value={location} onKeyDown={getCurrentData} type='text' onChange={event => setLocation(event.target.value)} placeholder='Enter location'/>
-      {errorMessage && <h2 className='animate__animated animate__shakeX'>{errorMessage}</h2>}
-    </div>
-
-    {showContainer && ( // Conditionally render the container
-      <div className="container">
-        <div className='item1 animate__animated animate__backInLeft'>
-        
-          <h2 className='cityName'>{c_weather && c_weather.name} 
-          
-          </h2> 
-          <h2 className='degree'> Temp  {isFahrenheit
-                  ? // Convert Celsius to Fahrenheit
-                    (c_weather && (c_weather.main.temp * 9) / 5 + 32).toFixed(2) + '°F'
-                  : // Display Celsius
-                    (c_weather && c_weather.main.temp).toFixed(2) + '°C'}
-              </h2>
-          <h2>Max Temp : {isFahrenheit
-                  ? // Convert Celsius to Fahrenheit
-                    (c_weather && (c_weather.main.temp_max* 9) / 5 + 32).toFixed(2)  + '°F'
-                  : // Display Celsius
-                    (c_weather && c_weather.main.temp_max).toFixed(2) + '°C'} </h2>
-          <h2> {c_weather.weather[0].description}</h2>
-          
+        <ToggleButton onToggle={handleToggle} />
+        <Search
+          location={location}
+          setLocation={setLocation}
+          getCurrentData={getCurrentData}
+          errorMessage={errorMessage}
+        />
+        {showContainer && (
+          <div className="container">
+            <Current c_weather={c_weather} isFahrenheit={isFahrenheit} />
+            {showContainer && (
+              <Forecast location={location} f_weather={f_weather} isFahrenheit={isFahrenheit} />
+            )}
           </div>
-
-
-      <div className="item2 animate__animated animate__backInUp">
-        <h2> {c_weather && c_weather.main.humidity}% Humid</h2>
-        <h2 className='degree'> Feels  {isFahrenheit
-                  ? // Convert Celsius to Fahrenheit
-                    (c_weather && (c_weather.main.feels_like* 9) / 5 + 32).toFixed(2)  + '°F'
-                  : // Display Celsius
-                    (c_weather && c_weather.main.feels_like).toFixed(2) + '°C'}</h2>
-        <h2>Min Temp : {isFahrenheit
-                  ? // Convert Celsius to Fahrenheit
-                    (c_weather && (c_weather.main.temp_min * 9) / 5 + 32) + '°F'
-                  : // Display Celsius
-                    (c_weather && c_weather.main.temp_min) + '°C'} </h2>
-        <h2>Wind Speed: {c_weather.wind.speed} m/s</h2>
-
+        )}
       </div>
-
-{/* Conditionally render Forecast Data component */}
-{showContainer && (<Forecast location={location} f_weather={f_weather} isFahrenheit={isFahrenheit}/>)}
-      
-    </div>
-      )}
-
-      </div>
-     
-      
-    
-      </>
+    </>
   )
 }
 
