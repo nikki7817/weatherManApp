@@ -94,6 +94,7 @@ const forecastWeather = `https://api.openweathermap.org/data/2.5/forecast?q=${lo
           setLocation={setLocation}
           getCurrentData={getCurrentData}
           errorMessage={errorMessage}
+          c_weather={c_weather}
         />
         {showContainer && (
           <div className="container">
